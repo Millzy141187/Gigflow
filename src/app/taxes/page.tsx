@@ -12,7 +12,7 @@ export default function TaxesPage() {
   const router = useRouter();
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [loading, setLoading] = useState(true);
-  const [currency, setCurrency] = useState("USD");
+  const [currency, setCurrency] = useState("GBP");
   const [taxRate, setTaxRate] = useState(30);
 
   useEffect(() => {

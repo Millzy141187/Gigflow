@@ -12,7 +12,7 @@ export default function TransactionsPage() {
   const router = useRouter();
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [loading, setLoading] = useState(true);
-  const [currency, setCurrency] = useState("USD");
+  const [currency, setCurrency] = useState("GBP");
   const [search, setSearch] = useState("");
   const [filterType, setFilterType] = useState<"all" | "income" | "expense">("all");
 

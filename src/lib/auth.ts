@@ -27,7 +27,7 @@ export function registerUser(
     email,
     name,
     passwordHash: simpleHash(password),
-    currency: "USD",
+    currency: "GBP",
     incomeSources: [],
     createdAt: new Date().toISOString(),
     onboardingComplete: false,

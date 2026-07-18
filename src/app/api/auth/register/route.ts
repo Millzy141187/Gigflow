@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
         id: user.id,
         email: user.email!,
         name,
-        currency: "USD",
+        currency: "GBP",
         income_sources: [],
         onboarding_complete: true,
       }, { onConflict: "id" });

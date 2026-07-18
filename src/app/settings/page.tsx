@@ -11,7 +11,7 @@ export default function SettingsPage() {
   const [user, setUser] = useState<{ id: string; name: string; email: string; currency: string; incomeSources: string[] } | null>(null);
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState("");
-  const [currency, setCurrency] = useState("USD");
+  const [currency, setCurrency] = useState("GBP");
   const [sources, setSources] = useState<string[]>([]);
   const [newSource, setNewSource] = useState("");
   const [saved, setSaved] = useState(false);
@@ -34,7 +34,7 @@ export default function SettingsPage() {
   const removeSource = (source: string) => { setSources(sources.filter((s) => s !== source)); };
   const handleLogout = async () => { await fetch("/api/auth/logout", { method: "POST" }); router.push("/login"); };
 
-  const currencies = [{ code: "USD", label: "US Dollar ($)" },{ code: "EUR", label: "Euro (\u20ac)" },{ code: "GBP", label: "British Pound (\u00a3)" },{ code: "CAD", label: "Canadian Dollar (C$)" },{ code: "AUD", label: "Australian Dollar (A$)" },{ code: "INR", label: "Indian Rupee (\u20b9)" }];
+  const currencies = [{ code: "GBP", label: "US Dollar ($)" },{ code: "EUR", label: "Euro (\u20ac)" },{ code: "GBP", label: "British Pound (\u00a3)" },{ code: "CAD", label: "Canadian Dollar (C$)" },{ code: "AUD", label: "Australian Dollar (A$)" },{ code: "INR", label: "Indian Rupee (\u20b9)" }];
 
   if (loading) return <div className="min-h-screen flex items-center justify-center bg-[#f8fafb] dark:bg-[#0a0f1a]"><div className="shimmer w-48 h-4" /></div>;
 
@@ -65,10 +65,18 @@ export default function SettingsPage() {
         </div>
         <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm p-5 mb-4 animation-delay-300">
           <h2 className="font-semibold text-slate-800 dark:text-white mb-4 flex items-center gap-2">{theme === "dark" ? <Moon size={18} className="text-indigo-500" /> : <Sun size={18} className="text-amber-500" />} Appearance</h2>
-          <div className="flex gap-2">{(["light", "dark", "system"] as const).map((t) => <button key={t} onClick={() => setTheme(t)} className={cn("flex-1 py-2 rounded-lg text-xs font-medium transition-all capitalize", theme === t ? "bg-slate-800 dark:bg-white text-white dark:text-slate-900" : "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400")}>{t}</button>)}</div>
+          <div className="flex gap-2">{(["light", "dark", "system"] as const).map((t) => <button key={t} onClick={() => {
+                        setTheme(t);
+                        if (t === "dark") { document.documentElement.classList.add("dark"); localStorage.setItem("gigflow-theme", "dark"); }
+                        else if (t === "light") { document.documentElement.classList.remove("dark"); localStorage.setItem("gigflow-theme", "light"); }
+                        else { localStorage.removeItem("gigflow-theme");
+                          if (window.matchMedia("(prefers-color-scheme: dark)").matches) document.documentElement.classList.add("dark");
+                          else document.documentElement.classList.remove("dark");
+                        }
+                      }} className={cn("flex-1 py-2 rounded-lg text-xs font-medium transition-all capitalize", theme === t ? "bg-slate-800 dark:bg-white text-white dark:text-slate-900" : "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400")}>{t}</button>)}</div>
         </div>
         <button onClick={handleSave} className={cn("w-full py-3 rounded-xl font-semibold text-sm transition-all mb-4", saved ? "bg-emerald-500 text-white" : "bg-slate-800 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-700 dark:hover:bg-slate-100")}>{saved ? <span className="flex items-center justify-center gap-2"><Check size={16} /> Saved!</span> : "Save Changes"}</button>
-        <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm p-5 mb-4 animation-delay-400"><h2 className="font-semibold text-slate-800 dark:text-white mb-4 flex items-center gap-2"><Shield size={18} className="text-slate-500" /> Account</h2><div className="space-y-2"><div className="flex items-center justify-between py-2 px-1"><span className="text-sm text-slate-600 dark:text-slate-300">Data storage</span><span className="text-sm text-slate-400 dark:text-slate-500">Local JSON files</span></div></div></div>
+        <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm p-5 mb-4 animation-delay-400"><h2 className="font-semibold text-slate-800 dark:text-white mb-4 flex items-center gap-2"><Shield size={18} className="text-slate-500" /> Account</h2><div className="space-y-2"><div className="flex items-center justify-between py-2 px-1"><span className="text-sm text-slate-600 dark:text-slate-300">Data storage</span><span className="text-sm text-slate-400 dark:text-slate-500">Supabase (PostgreSQL)</span></div></div></div>
         <button onClick={handleLogout} className="w-full py-3 rounded-xl border border-red-200 dark:border-red-800 text-red-500 font-medium text-sm hover:bg-red-50 dark:hover:bg-red-950 transition-all flex items-center justify-center gap-2 animation-delay-500"><LogOut size={16} /> Log out</button>
       </main>
     </div>

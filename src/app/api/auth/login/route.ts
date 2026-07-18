@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
         id: data.user.id,
         email: data.user.email,
         name: profile?.name || data.user.email,
-        currency: profile?.currency || "USD",
+        currency: profile?.currency || "GBP",
       },
     });
   } catch {

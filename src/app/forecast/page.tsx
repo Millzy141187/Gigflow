@@ -14,7 +14,7 @@ export default function ForecastPage() {
   const router = useRouter();
   const [gigs, setGigs] = useState<Gig[]>([]);
   const [loading, setLoading] = useState(true);
-  const [currency, setCurrency] = useState("USD");
+  const [currency, setCurrency] = useState("GBP");
   const [avgMonthlyIncome, setAvgMonthly] = useState(0);
   const [monthlyIncome, setMonthlyIncome] = useState<{ month: string; amount: number }[]>([]);
   const [simScenario, setSimScenario] = useState<"none" | "drop30" | "drop50" | "double">("none");

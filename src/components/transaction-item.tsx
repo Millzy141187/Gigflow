@@ -12,7 +12,7 @@ interface TransactionItemProps {
   currency?: string;
 }
 
-export function TransactionItem({ type, amount, description, category, source, date, deductible, currency = "USD" }: TransactionItemProps) {
+export function TransactionItem({ type, amount, description, category, source, date, deductible, currency = "GBP" }: TransactionItemProps) {
   return (
     <div className="flex items-center gap-4 py-3 px-1 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-colors group">
       <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${

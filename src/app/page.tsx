@@ -115,7 +115,7 @@ export default function DashboardPage() {
 
   const recentTxns = (data.recentTransactions || []).slice(0, 8);
   const userName = (data.user?.name || "there").split(" ")[0];
-  const currency = data.user?.currency || "USD";
+  const currency = data.user?.currency || "GBP";
 
   const getTimeOfDay = () => {
     const h = new Date().getHours();

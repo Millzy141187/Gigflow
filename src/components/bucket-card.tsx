@@ -17,7 +17,7 @@ interface BucketCardProps {
   onClick?: () => void;
 }
 
-export function BucketCard({ name, targetAmount, currentAmount, allocationPercent, color, icon, currency = "USD", onClick }: BucketCardProps) {
+export function BucketCard({ name, targetAmount, currentAmount, allocationPercent, color, icon, currency = "GBP", onClick }: BucketCardProps) {
   const percent = targetAmount > 0 ? Math.min(100, (currentAmount / targetAmount) * 100) : 0;
   const Icon = iconMap[icon] || Folder;
   return (

@@ -12,7 +12,7 @@ export default function BucketsPage() {
   const router = useRouter();
   const [buckets, setBuckets] = useState<Bucket[]>([]);
   const [loading, setLoading] = useState(true);
-  const [currency, setCurrency] = useState("USD");
+  const [currency, setCurrency] = useState("GBP");
   const [editing, setEditing] = useState<string | null>(null);
   const [editAmount, setEditAmount] = useState("");
   const [showAdd, setShowAdd] = useState(false);

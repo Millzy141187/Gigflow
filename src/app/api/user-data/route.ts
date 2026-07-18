@@ -67,7 +67,7 @@ export async function GET(request: NextRequest) {
       id: user.id,
       name: profile?.name || user.email,
       email: user.email,
-      currency: profile?.currency || "USD",
+      currency: profile?.currency || "GBP",
     }),
     safeToSpend,
     income30,
