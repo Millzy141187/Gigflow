@@ -23,7 +23,7 @@ export default function SettingsPage() {
       setUser(d.user); setName(d.user.name); setCurrency(d.user.currency);
       setSources(d.user.incomeSources || []); setLoading(false);
     }).catch(() => setLoading(false));
-  }, [router]);
+  }, []);
 
   const handleSave = async () => {
     await fetch("/api/settings", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name, currency, incomeSources: sources }) });
@@ -34,7 +34,7 @@ export default function SettingsPage() {
   const removeSource = (source: string) => { setSources(sources.filter((s) => s !== source)); };
   const handleLogout = async () => { await fetch("/api/auth/logout", { method: "POST" }); router.push("/login"); };
 
-  const currencies = [{ code: "GBP", label: "US Dollar ($)" },{ code: "EUR", label: "Euro (\u20ac)" },{ code: "GBP", label: "British Pound (\u00a3)" },{ code: "CAD", label: "Canadian Dollar (C$)" },{ code: "AUD", label: "Australian Dollar (A$)" },{ code: "INR", label: "Indian Rupee (\u20b9)" }];
+  const currencies = [{ code: "USD", label: "US Dollar ($)" },{ code: "EUR", label: "Euro (\u20ac)" },{ code: "GBP", label: "British Pound (\u00a3)" },{ code: "CAD", label: "Canadian Dollar (C$)" },{ code: "AUD", label: "Australian Dollar (A$)" },{ code: "INR", label: "Indian Rupee (\u20b9)" }];
 
   if (loading) return <div className="min-h-screen flex items-center justify-center bg-[#f8fafb] dark:bg-[#0a0f1a]"><div className="shimmer w-48 h-4" /></div>;
 
