@@ -48,20 +48,7 @@ export default function LoginPage() {
           setLoading(false);
           return;
         }
-        // Seed demo data - await before redirecting
-        try {
-          const seedRes = await fetch("/api/auth/register", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name }),
-          });
-          if (!seedRes.ok) {
-            const errData = await seedRes.json().catch(() => ({}));
-            console.error("Failed to seed demo data:", errData);
-          }
-        } catch (seedErr) {
-          console.error("Seed API call failed:", seedErr);
-        }
+        // Redirect immediately - seed data handled by user-data API
       }
 
       router.push("/");

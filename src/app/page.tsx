@@ -24,6 +24,7 @@ export default function DashboardPage() {
   const [data, setData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
   const [showQuickLog, setShowQuickLog] = useState(false);
+  const [error, setError] = useState("");
   const [txnType, setTxnType] = useState<"income" | "expense">("income");
   const [txnAmount, setTxnAmount] = useState("");
   const [txnDesc, setTxnDesc] = useState("");
@@ -34,7 +35,7 @@ export default function DashboardPage() {
     fetch("/api/user-data")
       .then((r) => (r.ok ? r.json() : null))
       .then((d) => {
-        if (d?.error) { router.push("/login"); return; }
+        if (d?.error) { setError(d.error); setLoading(false); return; }
         setData(d); setLoading(false);
       })
       .catch(() => { setLoading(false); });
@@ -64,7 +65,7 @@ export default function DashboardPage() {
     );
   }
 
-  if (!data) { router.push("/login"); return null; }
+  if (!data) return null;
 
   const chartData = data.monthlyIncome.map((m) => {
     const exp = data.monthlyExpenses.find((e) => e.month === m.month);
@@ -79,7 +80,7 @@ export default function DashboardPage() {
         <div className="mb-6 animate-in">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-slate-500 dark:text-slate-400">Good {getTimeOfDay()}, {data.user.name.split(" ")[0]}</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400">Good {getTimeOfDay()}, {(data.user?.name || "there").split(" ")[0]}</p>
               <h1 className="text-2xl font-bold text-slate-800 dark:text-white mt-0.5">Dashboard</h1>
             </div>
             <button onClick={() => setShowQuickLog(!showQuickLog)} className="md:hidden flex items-center gap-2 px-4 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-medium text-sm shadow-lg shadow-emerald-200 dark:shadow-emerald-900/30 transition-all active:scale-95"><Plus size={18} />Log</button>
