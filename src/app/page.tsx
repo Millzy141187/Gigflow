@@ -86,6 +86,13 @@ export default function DashboardPage() {
     } finally { setSaving(false); }
   };
 
+  const handleDelete = async (id: string) => {
+    try {
+      const res = await fetch(`/api/transactions?id=${id}`, { method: "DELETE" });
+      if (res.ok) fetchData();
+    } catch { /* silent */ }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-950">
@@ -211,7 +218,7 @@ export default function DashboardPage() {
           ) : (
             <div className="divide-y divide-slate-100 dark:divide-slate-800">
               {recentTxns.map((txn: any) => (
-                <TransactionItem key={txn.id} type={txn.type} amount={txn.amount} description={txn.description} category={txn.category} source={txn.source} date={txn.date} deductible={txn.deductible} currency={currency} />
+                <TransactionItem key={txn.id} type={txn.type} amount={txn.amount} description={txn.description} category={txn.category} source={txn.source} date={txn.date} deductible={txn.deductible} currency={currency} onDelete={handleDelete} id={txn.id} />
               ))}
             </div>
           )}

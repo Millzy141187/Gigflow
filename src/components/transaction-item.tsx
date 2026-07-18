@@ -1,5 +1,5 @@
 import { formatCurrency, formatDateShort } from "@/lib/utils";
-import { ArrowDownLeft, ArrowUpRight, Tag } from "lucide-react";
+import { ArrowDownLeft, ArrowUpRight, Tag, Trash2 } from "lucide-react";
 
 interface TransactionItemProps {
   type: "income" | "expense";
@@ -10,9 +10,11 @@ interface TransactionItemProps {
   date: string;
   deductible?: boolean;
   currency?: string;
+  onDelete?: (id: string) => void;
+  id?: string;
 }
 
-export function TransactionItem({ type, amount, description, category, source, date, deductible, currency = "GBP" }: TransactionItemProps) {
+export function TransactionItem({ type, amount, description, category, source, date, deductible, currency = "GBP", onDelete, id }: TransactionItemProps) {
   return (
     <div className="flex items-center gap-4 py-3 px-1 hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl transition-colors group">
       <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
@@ -34,6 +36,15 @@ export function TransactionItem({ type, amount, description, category, source, d
         </p>
         <p className="text-xs text-slate-400 dark:text-slate-500">{formatDateShort(date)}</p>
       </div>
+      {onDelete && id && (
+        <button
+          onClick={(e) => { e.stopPropagation(); onDelete(id); }}
+          className="p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-950 text-slate-300 dark:text-slate-600 hover:text-red-500 transition-all shrink-0"
+          title="Delete transaction"
+        >
+          <Trash2 size={14} />
+        </button>
+      )}
     </div>
   );
 }

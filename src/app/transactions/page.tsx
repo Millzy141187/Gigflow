@@ -29,6 +29,13 @@ export default function TransactionsPage() {
       .catch((err) => { setError(err?.message || "Failed to load"); setLoading(false); });
   };
 
+  const handleDelete = async (id: string) => {
+    try {
+      const res = await fetch(`/api/transactions?id=${id}`, { method: "DELETE" });
+      if (res.ok) fetchData();
+    } catch { /* silent */ }
+  };
+
   useEffect(() => { fetchData(); }, []);
 
   const filtered = useMemo(() => {
@@ -94,7 +101,7 @@ export default function TransactionsPage() {
           {filtered.length === 0 ? (
             <div className="text-center py-12"><Filter size={36} className="mx-auto text-slate-300 dark:text-slate-600 mb-3" /><p className="text-slate-400 font-medium">No transactions found</p></div>
           ) : (
-            <div className="divide-y divide-slate-50 dark:divide-slate-800">{filtered.map((t) => <TransactionItem key={t.id} type={t.type} amount={t.amount} description={t.description} category={t.category} source={t.source} date={t.date} deductible={t.deductible} currency={currency} />)}</div>
+            <div className="divide-y divide-slate-50 dark:divide-slate-800">{filtered.map((t) => <TransactionItem key={t.id} type={t.type} amount={t.amount} description={t.description} category={t.category} source={t.source} date={t.date} deductible={t.deductible} currency={currency} onDelete={handleDelete} id={t.id} />)}</div>
           )}
         </div>
       </div>
