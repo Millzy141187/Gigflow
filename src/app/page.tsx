@@ -19,6 +19,7 @@ import {
   Briefcase,
   Info,
   AlertTriangle,
+  X,
 } from "lucide-react";
 
 interface DashboardData {
@@ -159,24 +160,48 @@ export default function DashboardPage() {
         </div>
 
         {showQuickLog && (
-          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm p-4 md:p-5 mb-6">
-            <div className="flex items-center justify-between mb-3">
-              <h2 className="font-semibold text-slate-800 dark:text-white">Quick Log</h2>
-              <button onClick={() => setShowQuickLog(false)} className="text-slate-400 text-sm">Cancel</button>
-            </div>
-            <form onSubmit={handleQuickLog} className="flex flex-col sm:flex-row gap-2">
-              <div className="flex gap-1 bg-slate-100 dark:bg-slate-800 rounded-xl p-1">
-                <button type="button" onClick={() => setTxnType("income")} className={cn("px-3 py-1.5 text-xs font-medium rounded-lg transition-all", txnType === "income" ? "bg-white dark:bg-slate-700 text-emerald-600 shadow-sm" : "text-slate-500")}>Income</button>
-                <button type="button" onClick={() => setTxnType("expense")} className={cn("px-3 py-1.5 text-xs font-medium rounded-lg transition-all", txnType === "expense" ? "bg-white dark:bg-slate-700 text-red-500 shadow-sm" : "text-slate-500")}>Expense</button>
+          <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center" onClick={() => setShowQuickLog(false)}>
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+            <div className="relative w-full sm:max-w-md bg-white dark:bg-slate-900 rounded-t-3xl sm:rounded-3xl p-6 pb-10 shadow-2xl animate-slide-up" onClick={(e) => e.stopPropagation()}>
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-lg font-bold text-slate-800 dark:text-white">Add Transaction</h2>
+                <button onClick={() => setShowQuickLog(false)} className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
+                  <X size={16} />
+                </button>
               </div>
-              <input type="number" value={txnAmount} onChange={(e) => setTxnAmount(e.target.value)} placeholder="Amount" className="flex-1 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm" required />
-              <input type="text" value={txnDesc} onChange={(e) => setTxnDesc(e.target.value)} placeholder="Description" className="flex-1 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm" required />
-              <button type="submit" disabled={saving} className="px-4 py-2 bg-emerald-500 text-white rounded-xl text-sm font-medium hover:bg-emerald-600 disabled:opacity-50">{saving ? "..." : "Add"}</button>
-            </form>
+
+              <div className="flex gap-1 bg-slate-100 dark:bg-slate-800 rounded-xl p-1 mb-4">
+                <button type="button" onClick={() => setTxnType("income")} className={cn("flex-1 py-3 text-sm font-medium rounded-lg transition-all flex items-center justify-center gap-1.5", txnType === "income" ? "bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm" : "text-slate-500 dark:text-slate-400")}>
+                  <ArrowDownLeft size={16} />
+                  Income
+                </button>
+                <button type="button" onClick={() => setTxnType("expense")} className={cn("flex-1 py-3 text-sm font-medium rounded-lg transition-all flex items-center justify-center gap-1.5", txnType === "expense" ? "bg-white dark:bg-slate-700 text-red-500 dark:text-red-400 shadow-sm" : "text-slate-500 dark:text-slate-400")}>
+                  <ArrowUpRight size={16} />
+                  Expense
+                </button>
+              </div>
+
+              <form onSubmit={handleQuickLog} className="space-y-4">
+                <div>
+                  <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1.5">Amount ({currency})</label>
+                  <input type="number" step="0.01" value={txnAmount} onChange={(e) => setTxnAmount(e.target.value)} placeholder="0.00" className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-lg font-semibold text-slate-800 dark:text-white placeholder:text-slate-300 dark:placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500" required autoFocus />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1.5">Description</label>
+                  <input type="text" value={txnDesc} onChange={(e) => setTxnDesc(e.target.value)} placeholder="What was this for?" className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500" required />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1.5">Source / Client <span className="text-slate-300 dark:text-slate-600">(optional)</span></label>
+                  <input type="text" value={txnSource} onChange={(e) => setTxnSource(e.target.value)} placeholder="e.g. Acme Corp" className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500" />
+                </div>
+                <button type="submit" disabled={saving} className="w-full py-3.5 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-xl font-semibold text-sm hover:from-emerald-600 hover:to-teal-600 shadow-lg shadow-emerald-500/20 transition-all disabled:opacity-50 disabled:shadow-none">
+                  {saving ? "Adding..." : txnType === "income" ? "Add Income" : "Add Expense"}
+                </button>
+              </form>
+            </div>
           </div>
         )}
-
-        <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm p-4 md:p-5">
+<div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm p-4 md:p-5">
           <div className="flex items-center justify-between mb-3">
             <h2 className="font-semibold text-slate-800 dark:text-white">Recent Transactions</h2>
             <button onClick={() => router.push("/transactions")} className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">View all</button>
