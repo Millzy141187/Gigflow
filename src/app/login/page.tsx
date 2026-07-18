@@ -29,31 +29,46 @@ export default function LoginPage() {
           return;
         }
       } else {
-        const { error: signUpError } = await supabase.auth.signUp({
+        const { data, error: signUpError } = await supabase.auth.signUp({
           email,
           password,
-          options: { data: { name } },
+          options: {
+            data: { name },
+            emailRedirectTo: window.location.origin,
+          },
         });
         if (signUpError) {
           setError(signUpError.message);
           setLoading(false);
           return;
         }
+        // If Supabase requires email confirmation, show a message
+        if (data.user && data.user.identities && data.user.identities.length === 0) {
+          setError("Please check your email to confirm your account before signing in.");
+          setLoading(false);
+          return;
+        }
         // Seed demo data - await before redirecting
-        const seedRes = await fetch("/api/auth/register", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name }),
-        });
-        if (!seedRes.ok) {
-          console.error("Failed to seed demo data");
+        try {
+          const seedRes = await fetch("/api/auth/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name }),
+          });
+          if (!seedRes.ok) {
+            const errData = await seedRes.json().catch(() => ({}));
+            console.error("Failed to seed demo data:", errData);
+          }
+        } catch (seedErr) {
+          console.error("Seed API call failed:", seedErr);
         }
       }
 
       router.push("/");
       router.refresh();
-    } catch {
-      setError("Something went wrong. Please try again.");
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Something went wrong. Please try again.";
+      setError(message);
       setLoading(false);
     }
   };
@@ -160,6 +175,7 @@ export default function LoginPage() {
                 </>
               )}
             </button>
+  
           </form>
         </div>
 
