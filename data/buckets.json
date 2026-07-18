@@ -1,0 +1,57 @@
+[
+  {
+    "id": "aaa2u5h3stmrp3ua4s",
+    "userId": "__demo__",
+    "targetAmount": 5000,
+    "currentAmount": 2100,
+    "allocationPercent": 30,
+    "color": "#ef4444",
+    "icon": "receipt",
+    "name": "Taxes",
+    "type": "taxes"
+  },
+  {
+    "id": "lnyq4hnkjn7mrp3ua4s",
+    "userId": "__demo__",
+    "targetAmount": 3000,
+    "currentAmount": 1500,
+    "allocationPercent": 20,
+    "color": "#f59e0b",
+    "icon": "shield",
+    "name": "Buffer / Emergency",
+    "type": "emergency"
+  },
+  {
+    "id": "n30qti63m97mrp3ua4s",
+    "userId": "__demo__",
+    "targetAmount": 2000,
+    "currentAmount": 350,
+    "allocationPercent": 15,
+    "color": "#8b5cf6",
+    "icon": "trending-up",
+    "name": "Business Growth",
+    "type": "growth"
+  },
+  {
+    "id": "8z9fx8fdhunmrp3ua4s",
+    "userId": "__demo__",
+    "targetAmount": 2500,
+    "currentAmount": 1800,
+    "allocationPercent": 25,
+    "color": "#3b82f6",
+    "icon": "home",
+    "name": "Living Expenses",
+    "type": "living"
+  },
+  {
+    "id": "0k36oks53omnmrp3ua4s",
+    "userId": "__demo__",
+    "targetAmount": 1000,
+    "currentAmount": 400,
+    "allocationPercent": 10,
+    "color": "#ec4899",
+    "icon": "sparkles",
+    "name": "Fun / Guilt-Free",
+    "type": "fun"
+  }
+]

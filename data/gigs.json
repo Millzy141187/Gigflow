@@ -1,0 +1,52 @@
+[
+  {
+    "id": "n8a3lnir57mrp3uab1",
+    "userId": "__demo__",
+    "client": "Acme Corp",
+    "expectedAmount": 2800,
+    "expectedDate": "2026-07-27T15:40:39.244Z",
+    "probability": "confirmed",
+    "status": "upcoming",
+    "title": "Redesign marketing site"
+  },
+  {
+    "id": "pmt3vg8izlomrp3uab1",
+    "userId": "__demo__",
+    "client": "TechStart Inc",
+    "expectedAmount": 1500,
+    "expectedDate": "2026-08-07T15:40:39.244Z",
+    "probability": "likely",
+    "status": "upcoming",
+    "title": "API integration work"
+  },
+  {
+    "id": "yak55zg8ewmrp3uab1",
+    "userId": "__demo__",
+    "client": "SaaSly",
+    "expectedAmount": 900,
+    "expectedDate": "2026-08-21T15:40:39.244Z",
+    "probability": "possible",
+    "status": "upcoming",
+    "title": "Mobile app bug fixes"
+  },
+  {
+    "id": "lx42uciikpbmrp3uab1",
+    "userId": "__demo__",
+    "client": "NewCo (proposal sent)",
+    "expectedAmount": 3500,
+    "expectedDate": "2026-08-31T15:40:39.244Z",
+    "probability": "speculative",
+    "status": "upcoming",
+    "title": "Brand identity package"
+  },
+  {
+    "id": "c4gpu9wzu4hmrp3uab1",
+    "userId": "__demo__",
+    "client": "DataViz Co",
+    "expectedAmount": 1200,
+    "expectedDate": "2026-07-22T15:40:39.244Z",
+    "probability": "confirmed",
+    "status": "in-progress",
+    "title": "Ongoing consulting retainer"
+  }
+]

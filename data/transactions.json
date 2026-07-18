@@ -1,0 +1,210 @@
+[
+  {
+    "id": "kheu153e5umrp3ua5u",
+    "userId": "__demo__",
+    "category": "freelance",
+    "deductible": false,
+    "type": "income",
+    "amount": 3500,
+    "description": "Web design project - Acme Corp",
+    "source": "Acme Corp",
+    "date": "2026-07-15T15:40:39.244Z"
+  },
+  {
+    "id": "4gx7ja3yixmrp3ua5u",
+    "userId": "__demo__",
+    "category": "freelance",
+    "deductible": false,
+    "type": "income",
+    "amount": 1200,
+    "description": "Logo design - StartupXYZ",
+    "source": "StartupXYZ",
+    "date": "2026-07-12T15:40:39.244Z"
+  },
+  {
+    "id": "ylfxzrbeu2kmrp3ua5u",
+    "userId": "__demo__",
+    "category": "consulting",
+    "deductible": false,
+    "type": "income",
+    "amount": 800,
+    "description": "Consulting call - Local Cafe",
+    "source": "Local Cafe",
+    "date": "2026-07-07T15:40:39.244Z"
+  },
+  {
+    "id": "0t6afh61mflmrp3ua5u",
+    "userId": "__demo__",
+    "category": "freelance",
+    "deductible": false,
+    "type": "income",
+    "amount": 2200,
+    "description": "Mobile app MVP - TechStart Inc",
+    "source": "TechStart Inc",
+    "date": "2026-07-02T15:40:39.244Z"
+  },
+  {
+    "id": "swn4zhhjnhmrp3ua5u",
+    "userId": "__demo__",
+    "category": "freelance",
+    "deductible": false,
+    "type": "income",
+    "amount": 4500,
+    "description": "Full-stack dashboard - DataViz Co",
+    "source": "DataViz Co",
+    "date": "2026-06-22T15:40:39.244Z"
+  },
+  {
+    "id": "wgc6899r1wkmrp3ua5u",
+    "userId": "__demo__",
+    "category": "freelance",
+    "deductible": false,
+    "type": "income",
+    "amount": 600,
+    "description": "Bug fix sprint - SaaSly",
+    "source": "SaaSly",
+    "date": "2026-06-12T15:40:39.244Z"
+  },
+  {
+    "id": "oc95y8p0zmmrp3ua5u",
+    "userId": "__demo__",
+    "category": "freelance",
+    "deductible": false,
+    "type": "income",
+    "amount": 1800,
+    "description": "E-commerce integration - ShopFlow",
+    "source": "ShopFlow",
+    "date": "2026-06-02T15:40:39.244Z"
+  },
+  {
+    "id": "mkk3q1sv0zcmrp3ua5u",
+    "userId": "__demo__",
+    "category": "subscriptions",
+    "deductible": true,
+    "type": "expense",
+    "amount": 45,
+    "description": "Adobe Creative Cloud",
+    "date": "2026-07-16T15:40:39.244Z"
+  },
+  {
+    "id": "4q9aaztv5pamrp3ua5u",
+    "userId": "__demo__",
+    "category": "workspace",
+    "deductible": true,
+    "type": "expense",
+    "amount": 120,
+    "description": "Coworking space - WeWork day pass",
+    "date": "2026-07-14T15:40:39.244Z"
+  },
+  {
+    "id": "4pej5b1jyn3mrp3ua5u",
+    "userId": "__demo__",
+    "category": "utilities",
+    "deductible": true,
+    "type": "expense",
+    "amount": 89,
+    "description": "Internet bill",
+    "date": "2026-07-13T15:40:39.244Z"
+  },
+  {
+    "id": "zrjwngfz46smrp3ua5u",
+    "userId": "__demo__",
+    "category": "groceries",
+    "deductible": false,
+    "type": "expense",
+    "amount": 250,
+    "description": "Grocery run - Trader Joe's",
+    "date": "2026-07-11T15:40:39.244Z"
+  },
+  {
+    "id": "snmmrzca4prmrp3ua5u",
+    "userId": "__demo__",
+    "category": "subscriptions",
+    "deductible": true,
+    "type": "expense",
+    "amount": 35,
+    "description": "GitHub Pro",
+    "date": "2026-07-09T15:40:39.244Z"
+  },
+  {
+    "id": "99nheehfe5mrp3ua5u",
+    "userId": "__demo__",
+    "category": "housing",
+    "deductible": false,
+    "type": "expense",
+    "amount": 1800,
+    "description": "Rent payment",
+    "date": "2026-07-05T15:40:39.244Z"
+  },
+  {
+    "id": "9459ti73k9bmrp3ua5u",
+    "userId": "__demo__",
+    "category": "meals",
+    "deductible": true,
+    "type": "expense",
+    "amount": 60,
+    "description": "Client lunch meeting",
+    "date": "2026-07-03T15:40:39.244Z"
+  },
+  {
+    "id": "u3r9q6h4gicmrp3ua5v",
+    "userId": "__demo__",
+    "category": "subscriptions",
+    "deductible": true,
+    "type": "expense",
+    "amount": 15,
+    "description": "Notion subscription",
+    "date": "2026-07-01T15:40:39.244Z"
+  },
+  {
+    "id": "p7ldonv0ujjmrp3ua5v",
+    "userId": "__demo__",
+    "category": "utilities",
+    "deductible": true,
+    "type": "expense",
+    "amount": 95,
+    "description": "Phone bill",
+    "date": "2026-06-27T15:40:39.244Z"
+  },
+  {
+    "id": "zdd2mv5funrmrp3ua5v",
+    "userId": "__demo__",
+    "category": "equipment",
+    "deductible": true,
+    "type": "expense",
+    "amount": 300,
+    "description": "New monitor - Dell 27\"",
+    "date": "2026-06-17T15:40:39.244Z"
+  },
+  {
+    "id": "qkpdfloaj5gmrp3ua5v",
+    "userId": "__demo__",
+    "category": "hosting",
+    "deductible": true,
+    "type": "expense",
+    "amount": 55,
+    "description": "Domain renewals",
+    "date": "2026-06-07T15:40:39.244Z"
+  },
+  {
+    "id": "yslavwuhvtfmrp3ua5v",
+    "userId": "__demo__",
+    "category": "personal",
+    "deductible": false,
+    "type": "expense",
+    "amount": 42,
+    "description": "Coffee + tips (monthly)",
+    "date": "2026-05-28T15:40:39.244Z"
+  },
+  {
+    "id": "zrb38lhcp0kmrp3w42o",
+    "userId": "sbggd4wv0omrp3ua4n",
+    "type": "income",
+    "amount": 20,
+    "category": "uncategorized",
+    "description": "Plumbing",
+    "source": "Mid norfolk heating",
+    "date": "2026-07-17T15:42:04.449Z",
+    "deductible": false
+  }
+]
